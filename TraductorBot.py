@@ -140,12 +140,9 @@ def callbackhandler(Update,context):
 		lang = data
 		
 		text=context.user_data.get("text","not found") 
-	
-		
-		
+			
 		blob = textblob.TextBlob(text)
-		
-		
+				
 		try:
 			
 			t = str(blob.translate(to=lang))
@@ -153,12 +150,10 @@ def callbackhandler(Update,context):
 			
 			context.bot.send_message(chat_id=chat_id,text=f"<b>❤ Done!</b>\n\n<code>{t}</code>",parse_mode="html")		
 		
-		
 		except Exception as error:
 			
 			context.bot.send_message(chat_id=chat_id,text=f"<b>❤ Done!</b>\n\n<code>{text}</code>",parse_mode="html")	
-		
-	
+			
 	elif data == "call_inline":
 			
 		boton1=InlineKeyboardButton(text=
@@ -216,14 +211,11 @@ def mode_inline(Update,context):
 		
 	except Exception:
 		text=text_inline		
-		
-		
-		
+				
 	consulta = InlineQueryResultArticle(id=query_id,title= lang,  input_message_content=InputTextMessageContent(text),
 		description=text)
 		
 	try :
-
 		results.append(consulta)
 		
 		try:
@@ -236,8 +228,6 @@ def mode_inline(Update,context):
 	
 	except UnboundLocalError :
 		pass
-
-
 
 if __name__ == "__main__":
 	
