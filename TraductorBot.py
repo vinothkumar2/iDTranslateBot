@@ -27,11 +27,7 @@ def start(Update,context):
 		InlineKeyboardMarkup([
 		[boton]]))
 
-def messagehandler(Update,context):
-	
-
-
-	
+def messagehandler(Update,context):	
 	
 	try :
 		chat_id = Update.message.chat.id
@@ -188,10 +184,7 @@ def callbackhandler(Update,context):
 		emoji=choice(emojis)		
 			
 		query=Update.callback_query
-		
-		
-		
-		
+				
 		query.edit_message_text(
 		text=f"<b>{emoji}Choose the language you want to translate to.</b>",
 		parse_mode="html",
@@ -201,8 +194,6 @@ def callbackhandler(Update,context):
 		[boton3 , boton4],
 		[boton5 , boton6]
 		]))	
-
-		
 
 def mode_inline(Update,context):
 	
