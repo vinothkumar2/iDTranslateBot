@@ -103,16 +103,16 @@ def messagehandler(Update,context):
 					text_transl = str(blob.translate(to=lang))
 					
 					context.bot.send_message(chat_id=chat_id,
-			 text=
-			 f"<b>Translation:</b>\n\n--> <code>{text_transl}</code>",parse_mode="html",
-				reply_to_message_id=message_id)				
+			                    text=
+			                    f"<b>Translation:</b>\n\n--> <code>{text_transl}</code>",parse_mode="html",
+				            reply_to_message_id=message_id)				
 				
 				except Exception:
 					
 					context.bot.send_message(chat_id=chat_id,
-			 text=
-			 f"<b>Translation:</b>\n\n--> <code>{text}</code>",parse_mode="html",
-				reply_to_message_id=message_id)		
+			                    text=
+			                    f"<b>Translation:</b>\n\n--> <code>{text}</code>",parse_mode="html",
+				            reply_to_message_id=message_id)		
 			
 			except AttributeError:
 				
