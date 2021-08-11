@@ -1,4 +1,4 @@
-# iDTranslateBot
+## [iDTranslateBot](https://t.me/iDTranslateBot)
 
 ### A simple telegram translator bot
 
