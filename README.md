@@ -1,6 +1,7 @@
 # iDTranslateBot
 
-### Telegram translator bot
+### A simple telegram translator bot
 
-* pip -r requirements.txt
-* Change the word TOKEN for the token that [BotFather](https://t.me/BotFather) gave you
+pip -r requirements.txt
+
+Or just tap [here](https://heroku.com/deploy?template=https://github.com/inDemocratic/iDTranslateBot)
