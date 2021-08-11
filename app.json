@@ -1,0 +1,34 @@
+{
+    "name":"iDTranslator Bot",
+    "description":"Un bot de Telegram para traducir en diferentes idiomas",
+    
+    "keywords":["Google Translate"],
+    
+    "repository":"https://github.com/inDemocratic/iDTranslateBot",
+    
+    "env":{
+        "TOKEN":{
+            "description":"Token de BotFather",
+            "value":"TOKEN"
+        }
+    },
+    
+    "buildpacks":[
+        
+        {"url":"heroku/python"}
+        
+        ],
+        
+        
+    "formation":{
+        "worker":{
+            "quantity":1,
+            "size":"Standard-1X"
+            
+            
+        }
+    },
+    
+    "stack":"heroku-20"
+    
+}
