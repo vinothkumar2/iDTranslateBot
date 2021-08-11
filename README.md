@@ -3,4 +3,4 @@
 
 
 ## Deploy
-To deploy on Heroku just tap [here](https://heroku.com/deploy?template=https://github.com/inDemocratic/iDTranslateBot)
+To deploy on Heroku just tap  →  [here](https://heroku.com/deploy?template=https://github.com/inDemocratic/iDTranslateBot)
