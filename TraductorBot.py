@@ -8,8 +8,9 @@ import telegram
 from random import choice
 
 import textblob
-import json
+
 import os
+
 
 def start(Update,context):
 	
@@ -28,7 +29,10 @@ def start(Update,context):
 		InlineKeyboardMarkup([
 		[boton]]))
 
-def messagehandler(Update,context):	
+
+
+def messagehandler(Update,context):
+		
 	
 	try :
 		chat_id = Update.message.chat.id
@@ -46,8 +50,6 @@ def messagehandler(Update,context):
 				
 				Update.message.reply_text(f"<b>❤ Done!\n\n</b><code>{text_transl}</code>",
 				parse_mode="html")
-					
-				
 				
 				
 			except Exception:
@@ -104,25 +106,31 @@ def messagehandler(Update,context):
 					text_transl = str(blob.translate(to=lang))
 					
 					context.bot.send_message(chat_id=chat_id,
-			                    text=
-			                    f"<b>Translation:</b>\n\n--> <code>{text_transl}</code>",parse_mode="html",
-				            reply_to_message_id=message_id)				
+			 text=
+			 f"<b>Translation:</b>\n\n--> <code>{text_transl}</code>",parse_mode="html",
+				reply_to_message_id=message_id)
+				
+					username=Update.effective_user.username
+					
 				
 				except Exception:
 					
 					context.bot.send_message(chat_id=chat_id,
-			                    text=
-			                    f"<b>Translation:</b>\n\n--> <code>{text}</code>",parse_mode="html",
-				            reply_to_message_id=message_id)		
+			 text=
+			 f"<b>Translation:</b>\n\n--> <code>{text}</code>",parse_mode="html",
+				reply_to_message_id=message_id)		
+					username=Update.effective_user.username
+					
+
 			
 			except AttributeError:
 				
-				answer="Is that a bot?"
+				answer="......?"
 				if lang!="en":
 					blob = textblob.TextBlob(answer)				
 					answer = str(blob.translate(to=lang))
 					
-				Update.message.reply_text(answer)	
+				Update.message.reply_text(answer)
 	
 	
 	except Exception :
@@ -141,46 +149,56 @@ def callbackhandler(Update,context):
 		lang = data
 		
 		text=context.user_data.get("text","not found") 
-			
+	
+		
+		
 		blob = textblob.TextBlob(text)
-				
+		
+		
 		try:
 			
 			t = str(blob.translate(to=lang))
 			
 			
-			context.bot.send_message(chat_id=chat_id,text=f"<b>❤ Done!</b>\n\n<code>{t}</code>",parse_mode="html")		
+			context.bot.send_message(chat_id=chat_id,text=f"<b>❤ Done!</b>\n\n<code>{t}</code>",parse_mode="html")
+
+		
 		
 		except Exception as error:
 			
-			context.bot.send_message(chat_id=chat_id,text=f"<b>❤ Done!</b>\n\n<code>{text}</code>",parse_mode="html")	
-			
+			context.bot.send_message(chat_id=chat_id,text=f"<b>❤ Done!</b>\n\n<code>{text}</code>",parse_mode="html")
+	
+	
+	
 	elif data == "call_inline":
 			
 		boton1=InlineKeyboardButton(text=
-		"🇪🇸Español" ,switch_inline_query="es ")
+		"🇪🇸Español" ,switch_inline_query="es Hi")
 		
 		boton2=InlineKeyboardButton(text=
-		"🇬🇧English" ,switch_inline_query="en ")
+		"🇬🇧English" ,switch_inline_query="en Hola")
 					
 		boton3=InlineKeyboardButton(text=
-		"🇷🇺русский" ,switch_inline_query="ru ")	
+		"🇷🇺русский" ,switch_inline_query="ru Hi")	
 		
 		boton4=InlineKeyboardButton(text=
-		"🇮🇹Italiano" ,switch_inline_query="it ")
+		"🇮🇹Italiano" ,switch_inline_query="it Hi")
 		
 		boton5=InlineKeyboardButton(text=
-		"🇰🇷한국어" ,switch_inline_query="ko ")		
+		"🇰🇷한국어" ,switch_inline_query="ko Hi")		
 				
 		boton6=InlineKeyboardButton(text=
-		"🇮🇳भारतीय" ,switch_inline_query="hi ")					
+		"🇮🇳भारतीय" ,switch_inline_query="hi Hi")					
 		
 		emojis = ["😁","😆","🙃","🙂"]
 		
 		emoji=choice(emojis)		
 			
 		query=Update.callback_query
-				
+		
+		
+		
+		
 		query.edit_message_text(
 		text=f"<b>{emoji}Choose the language you want to translate to.</b>",
 		parse_mode="html",
@@ -189,56 +207,191 @@ def callbackhandler(Update,context):
 		[boton1 , boton2],
 		[boton3 , boton4],
 		[boton5 , boton6]
-		]))	
+		]))
+
+		
 
 def mode_inline(Update,context):
 	
 	query_id=Update.inline_query.id	
 	query=Update.inline_query.query
 	
+	
+	
 
 	text_inline=query
 	
-	lang = text_inline[:2]
-	text_inline=text_inline[3:]
-
-	results=[]
+	if text_inline == "" :
+		
+		lang = Update.effective_user.language_code
+		
+		text = "<code>How to use inline mode❔</code>\n\nTo use the bot in inline mode you must first write the <b>language code</b> and then the <b>text</b>\n\nEg:\n→ <code>@iDTranslateBot en Hola</code>"
+		
+		if lang != "en":
+			
+			blob = textblob.TextBlob(text)
+			
+			text = str(blob.translate(to=lang))		
+		
+		
+		results = []
+		
+			
+			
+		consulta = InlineQueryResultArticle(id=query_id,title= "How to use inline mode?",  input_message_content=InputTextMessageContent(text , parse_mode="html"),
+			description="Help" , thumb_url="https://scontent-mia3-2.cdninstagram.com/v/t51.2885-15/e35/234574743_177829014414530_4640768280329369627_n.jpg?_nc_ht=scontent-mia3-2.cdninstagram.com&_nc_cat=102&_nc_ohc=3dB4zpPW3ncAX8b1Cv4&edm=AABBvjUBAAAA&ccb=7-4&oh=60d93c424bfe81eb820a9cec27d4f69e&oe=611A3A41&_nc_sid=83d603",reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="👨‍💻Creator" , url="https://t.me/iDmocratic") ,InlineKeyboardButton(text="📣Channel", url="https://t.me/InDemocratic/74")],[InlineKeyboardButton(text="🤖Other Bots" , url="https://t.me/InDemocratic/37")]]))
+			
+		try :
 	
-	blob = textblob.TextBlob(text_inline)
+			results.append(consulta)
+			
+			try:
+				context.bot.answer_inline_query(
+					Update.inline_query.id,
+					results=results , switch_pm_text="Language code + Text" , switch_pm_parameter ="uno")
+					
+					
+					
+			except telegram.error.BadRequest:
+				pass
+		
+		except UnboundLocalError :
+			pass		
 	
-	try :
+	
+	
+	
+	
+	else :		
 		
-		text = str(blob.translate(to=lang))
 		
-	except Exception:
-		text=text_inline		
-				
-	consulta = InlineQueryResultArticle(id=query_id,title= lang,  input_message_content=InputTextMessageContent(text),
-		description=text)
+		lang = text_inline[:2]
+		text_inline=text_inline[3:]
+	
+		results=[]
 		
-	try :
-		results.append(consulta)
+		blob = textblob.TextBlob(text_inline)
 		
-		try:
-			context.bot.answer_inline_query(
-				Update.inline_query.id,
-				results=results)
-				
-		except telegram.error.BadRequest:
+		try :
+			
+			text = str(blob.translate(to=lang))
+			
+		except Exception:
+			text=text_inline		
+			
+			
+			
+		consulta = InlineQueryResultArticle(id=query_id,title= lang,  input_message_content=InputTextMessageContent(text),
+			description=text , thumb_url="https://scontent-mia3-2.cdninstagram.com/v/t51.2885-15/e35/234574743_177829014414530_4640768280329369627_n.jpg?_nc_ht=scontent-mia3-2.cdninstagram.com&_nc_cat=102&_nc_ohc=3dB4zpPW3ncAX8b1Cv4&edm=AABBvjUBAAAA&ccb=7-4&oh=60d93c424bfe81eb820a9cec27d4f69e&oe=611A3A41&_nc_sid=83d603")
+			
+		try :
+	
+			results.append(consulta)
+			
+			try:
+				context.bot.answer_inline_query(
+					Update.inline_query.id,
+					results=results , switch_pm_text="Language code + Text" , switch_pm_parameter ="uno")
+					
+					
+			except telegram.error.BadRequest:
+				pass
+		
+		except UnboundLocalError :
 			pass
+
+
+
+
+
+def langcode(Update,context):
 	
-	except UnboundLocalError :
-		pass
+	
+	text ="""ar:árabe
+	bg:búlgaro
+	ca:catalán
+	cs:checo
+	da:danés
+	de:alemán
+	el:griego
+	en:inglés
+	es:español
+	et:estonio
+	fi:finés
+	fr:francés
+	zh:chino
+	vi:vietnamita
+	uk:ucranio
+	tr:turco
+	th:tailandés
+	sv:sueco
+	sr:serbio
+	ru:ruso
+	ro:rumano
+	pt:portugués
+	pl:polaco
+	no:noruego
+	nl:neerlandés
+	ms:malayo
+	mk:macedonio
+	lv:letón
+	lt:lituano
+	ko:coreano
+	ja:japonés
+	iw:hebreo
+	it:italiano
+	is:islandés
+	in:indonesio
+	hr:croata
+	hu:húngaro
+	hi:hindú
+	ga:irlandés
+	be:bielorruso"""	
+	
+	l = text.splitlines()
+	
+	lista =[]
+	n=0
+	for i in l:
+		i = i.replace('\t' , "")		
+		
+		if n % 2 == 0:
+			li = len(i)
+			lista.append(f'{i}')
+			
+		elif n % 2 == 1 :
+			if li != None:
+				x = 14 - li
+				
+				es=[]
+				for xw in range(x):
+					es.append(" ")
+				
+				esp="".join(es)
+				lista.append(f"{esp}{i}\n")
+			
+			
+		n += 1
+		
+	l1="".join(lista)
+	
+	text = f"<b>📔Language Code</b>\n\n<code>{l1}</code>"
+	
+	Update.message.reply_text(text,"html")
+
+
 
 if __name__ == "__main__":
 	
-	updater=Updater(token=os.environ ["TOKEN"])
+	updater=Updater(token=os.environ["TOKEN"])
 	
 	update=updater
 	
 	dp = updater.dispatcher
 	
 	dp.add_handler(CommandHandler('start',start))
+	
+	dp.add_handler(CommandHandler("langcode",langcode))
 	
 	dp.add_handler(CallbackQueryHandler(pattern=0,callback=callbackhandler))
 	
@@ -248,5 +401,5 @@ if __name__ == "__main__":
 	
 	
 	updater.start_polling()
-	print("bot is running")
+	print("bot Transalte is running")
 	updater.idle()
