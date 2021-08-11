@@ -9,6 +9,7 @@ from random import choice
 
 import textblob
 import json
+import os
 
 def start(Update,context):
 	
@@ -231,7 +232,7 @@ def mode_inline(Update,context):
 
 if __name__ == "__main__":
 	
-	updater=Updater(token="TOKEN")
+	updater=Updater(token=os.environ ["TOKEN"])
 	
 	update=updater
 	
