@@ -1,7 +1,12 @@
 # iDTranslateBot
 
+<details>
+
+<summary><b>Telegram Bot</b></summary><br>
+
 <a href="https://t.me/iDTranslateBot" ><img alt="Telegram" src="https://img.shields.io/badge/iDTranslateBot-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"/> </a>
 
+</details>
 
 <details>
   <summary><b>Deploy on Heroku</b></summary>
