@@ -17,3 +17,7 @@
 
 
 </details>
+
+## Variable
+
+`TOKEN` Your token from @BotFather
