@@ -239,7 +239,7 @@ def mode_inline(Update,context):
 			
 			
 		consulta = InlineQueryResultArticle(id=query_id,title= "How to use inline mode?",  input_message_content=InputTextMessageContent(text , parse_mode="html"),
-			description="Help" , thumb_url="https://scontent-mia3-2.cdninstagram.com/v/t51.2885-15/e35/234574743_177829014414530_4640768280329369627_n.jpg?_nc_ht=scontent-mia3-2.cdninstagram.com&_nc_cat=102&_nc_ohc=3dB4zpPW3ncAX8b1Cv4&edm=AABBvjUBAAAA&ccb=7-4&oh=60d93c424bfe81eb820a9cec27d4f69e&oe=611A3A41&_nc_sid=83d603",reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="👨‍💻Creator" , url="https://t.me/iDmocratic") ,InlineKeyboardButton(text="📣Channel", url="https://t.me/InDemocratic/120")],[InlineKeyboardButton(text="🤖Other Bots" , url="https://t.me/InDemocratic/37")]]))
+			description="Help" , thumb_url="https://yourlink.cc/miniatura-translatebot",reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="👨‍💻Creator" , url="https://t.me/iDmocratic") ,InlineKeyboardButton(text="📣Channel", url="https://t.me/InDemocratic/120")],[InlineKeyboardButton(text="🤖Other Bots" , url="https://t.me/InDemocratic/37")]]))
 			
 		try :
 	
@@ -282,7 +282,7 @@ def mode_inline(Update,context):
 			
 			
 		consulta = InlineQueryResultArticle(id=query_id,title= lang,  input_message_content=InputTextMessageContent(text),
-			description=text , thumb_url="https://scontent-mia3-2.cdninstagram.com/v/t51.2885-15/e35/234574743_177829014414530_4640768280329369627_n.jpg?_nc_ht=scontent-mia3-2.cdninstagram.com&_nc_cat=102&_nc_ohc=3dB4zpPW3ncAX8b1Cv4&edm=AABBvjUBAAAA&ccb=7-4&oh=60d93c424bfe81eb820a9cec27d4f69e&oe=611A3A41&_nc_sid=83d603")
+			description=text , thumb_url="https://yourlink.cc/miniatura-translatebot")
 			
 		try :
 	
