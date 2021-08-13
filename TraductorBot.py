@@ -239,7 +239,7 @@ def mode_inline(Update,context):
 			
 			
 		consulta = InlineQueryResultArticle(id=query_id,title= "How to use inline mode?",  input_message_content=InputTextMessageContent(text , parse_mode="html"),
-			description="Help" , thumb_url="https://yourlink.cc/miniatura-translatebot",reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="👨‍💻Creator" , url="https://t.me/iDmocratic") ,InlineKeyboardButton(text="📣Channel", url="https://t.me/InDemocratic/120")],[InlineKeyboardButton(text="🤖Other Bots" , url="https://t.me/InDemocratic/37")]]))
+			description="Help" , thumb_url="https://yourlink.cc/miniatura-translatebot",reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="👨‍💻Creator" , url="https://github.com/inDemocratic") ,InlineKeyboardButton(text="📣Channel", url="https://t.me/InDemocratic/120")],[InlineKeyboardButton(text="🤖Other Bots" , url="https://t.me/InDemocratic/37")]]))
 			
 		try :
 	
