@@ -248,7 +248,7 @@ def mode_inline(Update,context):
 			try:
 				context.bot.answer_inline_query(
 					Update.inline_query.id,
-					results=results , switch_pm_text="Language code + Text" , switch_pm_parameter ="uno")
+					results=results , is_personal=True , switch_pm_text="Language code + Text" , switch_pm_parameter ="uno")
 					
 					
 					
@@ -291,7 +291,7 @@ def mode_inline(Update,context):
 			try:
 				context.bot.answer_inline_query(
 					Update.inline_query.id,
-					results=results , switch_pm_text="Language code + Text" , switch_pm_parameter ="uno")
+					results=results ,  is_personal=True    ,switch_pm_text="Language code + Text" , switch_pm_parameter ="uno")
 					
 					
 			except telegram.error.BadRequest:
